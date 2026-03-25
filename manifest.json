@@ -1,11 +1,11 @@
 {
-  "name": "VividVerse — Film Distribution Network",
-  "short_name": "VividVerse",
+  "name": "VividVerse TV",
+  "short_name": "VividVerse TV",
   "description": "Distribute your film to Apple TV, Amazon, Google Play, Vudu, and more.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#05000F",
-  "theme_color": "#480082",
+  "background_color": "#ffffff",
+  "theme_color": "#6F00FE",
   "orientation": "portrait-primary",
   "icons": [
     {
