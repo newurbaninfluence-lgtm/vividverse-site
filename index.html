@@ -8,35 +8,7 @@
     });
     const d=await r.json();
     if(d&&d[0]&&d[0].status!=="active"){
-      document.documentElement.innerHTML='<head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Site Unavailable</title><style id="vv-shimmer">
-@keyframes vvShimmer {
-  0%   { background-position: 200% center; }
-  100% { background-position: -200% center; }
-}
-
-/* Section headings */
-[class*="from-violet-400"][class*="font-black"],
-[class*="from-indigo-400"][class*="font-black"],
-[class*="from-purple-400"][class*="font-black"] {
-  background: linear-gradient(90deg,#480082,#6F00FE,#9B30FF,#C060FF,#9B30FF,#6F00FE,#480082) !important;
-  background-size: 250% auto !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  animation: vvShimmer 4s linear infinite !important;
-}
-
-/* Violet/purple buttons */
-[class*="bg-violet-6"][class*="font-"],
-[class*="bg-indigo-6"][class*="font-"],
-[class*="bg-purple-6"][class*="font-"] {
-  background: linear-gradient(90deg,#480082,#6F00FE,#9B30FF,#6F00FE,#480082) !important;
-  background-size: 250% auto !important;
-  animation: vvShimmer 3s linear infinite !important;
-  box-shadow: 0 4px 28px rgba(111,0,254,0.5) !important;
-}
-</style>
-</head><body style="margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#05000F;font-family:system-ui,sans-serif;color:#fff;text-align:center;padding:40px"><div><div style="font-size:64px;margin-bottom:24px;opacity:0.3">&#128274;</div><h1 style="font-size:28px;font-weight:900;margin-bottom:12px;color:#fff">Website Temporarily Unavailable</h1><p style="color:rgba(255,255,255,0.4);font-size:15px;max-width:400px;line-height:1.6;margin:0 auto 24px">'+(d[0].suspended_reason||"This website has been temporarily suspended. Please contact the site administrator for assistance.")+'</p><p style="color:rgba(255,255,255,0.2);font-size:12px">Managed by <a href=\"https://newurbaninfluence.com\" style=\"color:#7C3AFF;text-decoration:underline\">New Urban Influence</a></p></div></body>';
+      document.documentElement.innerHTML='<head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Site Unavailable</title></head><body style="margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#05000F;font-family:system-ui,sans-serif;color:#fff;text-align:center;padding:40px"><div><div style="font-size:64px;margin-bottom:24px;opacity:0.3">&#128274;</div><h1 style="font-size:28px;font-weight:900;margin-bottom:12px;color:#fff">Website Temporarily Unavailable</h1><p style="color:rgba(255,255,255,0.4);font-size:15px;max-width:400px;line-height:1.6;margin:0 auto 24px">'+(d[0].suspended_reason||"This website has been temporarily suspended. Please contact the site administrator for assistance.")+'</p><p style="color:rgba(255,255,255,0.2);font-size:12px">Managed by <a href=\"https://newurbaninfluence.com\" style=\"color:#7C3AFF;text-decoration:underline\">New Urban Influence</a></p></div></body>';
     }
   }catch(e){}
 })();
@@ -247,5 +219,51 @@ ${B}`}class Je extends Error{constructor({message:n,code:l,cause:r,name:c}){var 
   else{setTimeout(injectSwirl,500)}
 })();
 </script>
-  </body>
+  <script id="vv-swirl">
+(function(){
+  var st = document.createElement('style');
+  st.textContent = '@keyframes nebulaSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes vvShimmer{0%{background-position:200% center}100%{background-position:-200% center}}';
+  document.head.appendChild(st);
+
+  function run(){
+    var hero = document.querySelector('section.relative.min-h-screen');
+    if(!hero){ setTimeout(run,300); return; }
+
+    // Video — sibling to bg div, same as Mac Mini line 47
+    var vid = document.createElement('video');
+    vid.autoplay = true;
+    vid.muted = true;
+    vid.loop = true;
+    vid.setAttribute('playsinline','');
+    vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.3;mix-blend-mode:screen;pointer-events:none';
+    var src = document.createElement('source');
+    src.src = '/assets/hero-video.mp4';
+    src.type = 'video/mp4';
+    vid.appendChild(src);
+    // Insert after the first child (bg div)
+    var bgDiv = hero.firstChild;
+    hero.insertBefore(vid, bgDiv ? bgDiv.nextSibling : null);
+
+    // Shimmer headings
+    function shimmer(){
+      document.querySelectorAll('[class*="font-black"][class*="text-transparent"]').forEach(function(el){
+        el.style.background='linear-gradient(90deg,#480082,#6F00FE,#9B30FF,#C060FF,#9B30FF,#6F00FE,#480082)';
+        el.style.backgroundSize='250% auto';
+        el.style.webkitBackgroundClip='text';
+        el.style.backgroundClip='text';
+        el.style.webkitTextFillColor='transparent';
+        el.style.animation='vvShimmer 8s linear infinite';
+      });
+    }
+    setTimeout(shimmer,600);
+    setTimeout(shimmer,1500);
+    setTimeout(shimmer,3000);
+  }
+
+  document.readyState==='loading'
+    ? document.addEventListener('DOMContentLoaded',function(){setTimeout(run,500)})
+    : setTimeout(run,500);
+})();
+</script>
+</body>
 </html>
