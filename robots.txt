@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.vividverse.com/sitemap.xml
+Sitemap: https://www.vividversetv.com/sitemap.xml
